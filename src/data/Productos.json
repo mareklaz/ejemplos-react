@@ -1,0 +1,58 @@
+[
+	{
+		"id": 1,
+		"nombre": "Patatas",
+		"descripcion": "Una bolsa de patatas normales",
+		"categoria": "Verdura",
+		"activo": true,
+		"precio": 5
+	},
+	{
+		"id": 2,
+		"nombre": "Maiz",
+		"descripcion": "Una bolsa de maiz normales",
+		"categoria": "Verdura",
+		"activo": false,
+		"precio": 2
+	},
+	{
+		"id": 3,
+		"nombre": "Manzanas",
+		"descripcion": "Una bolsa de manzanas normales",
+		"categoria": "Fruta",
+		"activo": true,
+		"precio": 10
+	},
+	{
+		"id": 4,
+		"nombre": "Zanahoria",
+		"descripcion": "Una bolsa de zanahorias normales",
+		"categoria": "Verdura",
+		"activo": true,
+		"precio": 4
+	},
+	{
+		"id": 5,
+		"nombre": "Sandia",
+		"descripcion": "Una bolsa de sandias normales",
+		"categoria": "Fruta",
+		"activo": true,
+		"precio": 15
+	},
+	{
+		"id": 6,
+		"nombre": "Peras",
+		"descripcion": "Una bolsa de peras normales",
+		"categoria": "Fruta",
+		"activo": true,
+		"precio": 8
+	},
+	{
+		"id": 7,
+		"nombre": "Pan",
+		"descripcion": "Pan recien horneado",
+		"categoria": "Procesado",
+		"activo": true,
+		"precio": 0.5
+	}
+]
