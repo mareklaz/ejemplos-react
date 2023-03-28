@@ -6,18 +6,29 @@ export default function Filtros() {
 	const [productos, setProductos] = useState(listaProductos);
 	const [productosFiltrados, setProductosFiltrados] = useState(productos);
 
-	const [filtro, setFiltro] = useState('');
+	const [filtro, setFiltro] = useState({ nombre: '', activo: '' });
 	const [filtroTag, setFiltroTag] = useState('');
+	const [filtroActivoTag, setActivoTag] = useState('');
+
 	console.log('Filtro:', filtro);
 	console.log('Producto filtrado:', productosFiltrados);
 
 	const filtrar = () => {
-		setFiltroTag(filtro);
+		setFiltroTag(filtro.nombre);
+		setActivoTag(filtro.activo);
+
 		!filtro
 			? setProductosFiltrados(productos)
 			: setProductosFiltrados(
-					productos.filter((producto) =>
-						producto.nombre.toLowerCase().includes(filtro.toLocaleLowerCase())
+					productos.filter(
+						(producto) =>
+							producto.nombre
+								.toLowerCase()
+								.includes(filtro.nombre.toLocaleLowerCase()) ||
+							producto.activo.includes(filtro.activo)
+						// producto.activo
+						// 	.toLowerCase()
+						// 	.includes(filtro.activo.toLocaleLowerCase())
 					)
 			  );
 	};
@@ -33,14 +44,28 @@ export default function Filtros() {
 				<Link to='/'>Volver a inicio</Link>
 			</div>
 			<div className='row mb-3'>
-				{/* <div className='col-3'>
+				<div className='col-3'>
 					<label className='form-label fw-bold'>Filtro: Activo</label>
-					<select className='form-select' aria-label='Default select example'>
-						<option value='0'>Todos</option>
-						<option value='1'>Activo</option>
-						<option value='2'>No Activo</option>
+					<select
+						className='form-select'
+						aria-label='Default select example'
+						value={filtro.activo}
+						onChange={(e) => {
+							setFiltro({ ...filtro, activo: e.target.value });
+						}}>
+						<option value={true}>Activo</option>
+						<option value={false}>Inactivo</option>
 					</select>
-				</div> */}
+					{filtroActivoTag ? (
+						<span className='badge rounded-pill text-bg-primary my-2'>
+							Activo
+						</span>
+					) : (
+						<span className='badge rounded-pill text-bg-primary my-2'>
+							Inactivo
+						</span>
+					)}
+				</div>
 				<div className='col-4'>
 					<label className='form-label fw-bold'>Filtro: Nombre</label>
 					<div className='d-flex'>
@@ -48,9 +73,9 @@ export default function Filtros() {
 							type='text'
 							className='form-control'
 							placeholder='Buscar...'
-							value={filtro}
+							value={filtro.nombre}
 							onChange={(e) => {
-								setFiltro(e.target.value);
+								setFiltro({ ...filtro, nombre: e.target.value });
 							}}
 						/>
 						<button
@@ -61,7 +86,7 @@ export default function Filtros() {
 						</button>
 					</div>
 					{filtroTag && (
-						<span class='badge rounded-pill text-bg-primary my-2'>
+						<span className='badge rounded-pill text-bg-primary my-2'>
 							{filtroTag}
 						</span>
 					)}

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const links = [{ titulo: 'Filtros', enlace: '/filtros' }];
+const links = [
+	{ titulo: 'Filtros', enlace: '/filtros' },
+	{ titulo: 'Tienda', enlace: '/tienda' },
+];
 
 export default function Main() {
 	return (
